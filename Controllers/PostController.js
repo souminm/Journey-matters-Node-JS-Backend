@@ -1,4 +1,3 @@
-
 const Listing = require('../Models/ListingModel')
 const createPost = async(req,res)=>{
  try {
