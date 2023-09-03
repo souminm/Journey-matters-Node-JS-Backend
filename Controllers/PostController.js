@@ -22,6 +22,31 @@ const getListings = async(req,res)=>{
         res.status(400).send({success:false,msg:error.message});
     }
 }
+
+const deleteListing = async(req,res) =>{
+    try {
+      const id = req.params.id
+       await Listing.deleteOne({_id:id});
+       res.status(200).send({success:true,msg:'Listing deleted successfully!'})
+    } catch (error) {
+        res.status(400).send({success:false,msg:error.message});
+    }
+}
+
+const updateListing = async(req,res) =>{
+    try {
+        var id = req.body.id;
+        var category = req.body.category;
+        var title = req.body.title;
+        var url = req.body.url;
+        var link = req.body.link;
+        // var updatedAt = date.now();
+        await Listing.findByIdAndUpdate({_id: id},{$set:{category :category,title:title,link : link ,url: url}})
+        res.status(200).send({success:true,msg:'Listing updated successfully!'})
+    } catch (error) {
+        res.status(400).send({success:false,msg:error.message});
+    }
+}
 module.exports = {
-    createPost,getListings
+    createPost,getListings,deleteListing,updateListing
 }

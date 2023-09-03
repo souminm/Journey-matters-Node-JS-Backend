@@ -10,6 +10,9 @@ const postController = require('../Controllers/PostController');
 
 post_route.post('/create-listing',postController.createPost);
 post_route.get('/get-listing',postController.getListings);
+post_route.get('/delete-listing/:id',postController.deleteListing);
+post_route.post('/update-listing',postController.updateListing);
+
 post_route.use(cors({ origin: true }));
 
 module.exports = post_route; 
