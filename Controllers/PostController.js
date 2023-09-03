@@ -16,7 +16,7 @@ const createPost = async(req,res)=>{
 }
 const getListings = async(req,res)=>{
     try {
-        const listings = await Listing.find({});
+        const listings = await Listing.find({}).sort([['createdAt' , 'descending']]);
         res.status(200).send({success:true,msg:'Successfully fetched Data',data:listings})
     } catch (error) {
         res.status(400).send({success:false,msg:error.message});
