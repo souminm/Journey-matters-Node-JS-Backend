@@ -9,7 +9,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         required:true
     },
-    "createdAt" :{type:Date,default:Date.now()}
+    "createdAt" :{type:String,default:createDateTimeFormatter(Date.now())}
    });
 
    module.exports = mongoose.model("Listing")
